@@ -9,4 +9,4 @@ dependencies:
   - pip:
       - mlflow==3.3.2
       - wandb==0.21.3
-      - -e ..
+      - wandb-utils @ file:../wandb-utils
