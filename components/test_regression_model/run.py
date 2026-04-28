@@ -9,7 +9,7 @@ import mlflow
 import pandas as pd
 from sklearn.metrics import mean_absolute_error
 
-import wandb_utils
+import wandb_utils # noqa: F401 # we need the Artifact.file work-around
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")

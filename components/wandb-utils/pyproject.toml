@@ -1,6 +1,6 @@
 [project]
 name = "wandb-utils"
-version = "0.1"
+version = "0.2.0"
 description = "Utilities for interacting with Weights and Biases and mlflow"
 authors = [
   { name = "Karen Hebel", email = "karen.hebel@udacity.com" }
