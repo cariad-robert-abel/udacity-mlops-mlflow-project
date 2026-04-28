@@ -104,13 +104,15 @@ class PipelineStep:
             SubmittedRun exposing information (e.g. run ID) about the launched run.
         """
         prefix = Path(__file__).parent / (config['main']['components'] if (self.component) else 'src')
+        # pass +main.environment=local to MLflow to re-use local environment for each step
+        env_manager = config['main'].get('environment', 'conda')
 
         # execute MLflow
         mlflow.set_tracking_uri
         return mlflow.run(
             uri=f'{prefix}/{self.directory}',
             entry_point='main',
-            env_manager='conda',
+            env_manager=env_manager,
             parameters=self._get_mlflow_parameters(config),
         )
 

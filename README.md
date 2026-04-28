@@ -59,6 +59,11 @@ order to only run individual steps or `all` to run all steps (default).
 Configuration options may be overwritten at run time using the `hydra-options` parameter, see
 [Hydra](https://hydra.cc/).
 
+Append option `main.environment` to overwrite MLflow's `--env-manager` option for each component,
+e.g. re-use the local conda environment for *all* components in a run as follows:
+
+    mlflow run ./exercise_N -P hydra-options=+main.environment=conda
+
 ## License
 
 Original files Copyright 2012–2022 Udacity, Inc.
