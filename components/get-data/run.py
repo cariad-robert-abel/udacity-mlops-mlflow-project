@@ -25,7 +25,7 @@ def go(args: argparse.Namespace):
     log_artifact(
         args.artifact_name,
         args.artifact_type,
-        args.artifact_description,
+        args.artifact_description.replace('_', ' '),
         os.path.join("data", args.sample),
         run,
     )
