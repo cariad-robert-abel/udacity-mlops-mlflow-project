@@ -61,7 +61,7 @@ def go(args: argparse.Namespace):
         log_artifact(
             args.output_artifact,
             args.output_type,
-            args.output_description,
+            args.output_description.replace('_', ' '),
             filename,
             run
             )
