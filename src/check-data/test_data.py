@@ -6,7 +6,7 @@ import numpy as np
 import scipy.stats
 
 
-def test_column_names(data):
+def test_column_names(data: pd.DataFrame):
 
     expected_colums = [
         "id",
@@ -33,7 +33,7 @@ def test_column_names(data):
     assert np.array_equal(expected_colums, these_columns)  # Using numpy comparison for better performance
 
 
-def test_neighborhood_names(data):
+def test_neighborhood_names(data: pd.DataFrame):
 
     known_names = ["Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"]
 
@@ -66,3 +66,11 @@ def test_similar_neigh_distrib(data: pd.DataFrame, ref_data: pd.DataFrame, kl_th
 ########################################################
 # Implement here test_row_count and test_price_range   #
 ########################################################
+
+def test_row_count(data: pd.DataFrame):
+    """Test for sensible number of rows in batched CSV data"""
+    assert 15000 < data.shape[0] < 1_000_000, "Dataframe should have between 15k and 1M rows"
+
+def test_price_range(data: pd.DataFrame, min_price: int, max_price: int):
+    """Test that all prices are between min_price and max_price"""
+    assert data['price'].between(min_price, max_price).all(), f"All prices should be between {min_price} and {max_price}"

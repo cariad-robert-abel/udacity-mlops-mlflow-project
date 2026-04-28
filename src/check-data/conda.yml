@@ -10,4 +10,4 @@ dependencies:
   - pip=26.0.1
   - pip:
       - wandb==0.26.0
-      - wandb-utils @ file:./components/wandb-utils
+      - wandb-utils @ file:../../components/wandb-utils
