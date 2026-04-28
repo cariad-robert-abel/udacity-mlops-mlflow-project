@@ -14,7 +14,6 @@ setup(
         "Development Status :: 4 - Beta",
     ],
     install_requires=[
-        "mlflow",
         "wandb"
     ]
 )
