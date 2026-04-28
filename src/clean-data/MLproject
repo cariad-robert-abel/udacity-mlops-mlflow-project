@@ -1,0 +1,33 @@
+name: clean-data
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      input-artifact:
+        description: Name of the input CSV artifact
+        type: string
+      output-artifact:
+        description: Name for the output artifact
+        type: string
+      output-type:
+        description: Type of the output artifact
+        type: string
+      output-description:
+        description: Brief description of the output artifact
+        type: string
+      min-price:
+        description: Minimum accepted price
+        type: int
+      max-price:
+        description: Maximum accepted price
+        type: int
+
+    command: >-
+        python run.py
+        --input-artifact {input-artifact}
+        --output-artifact {output-artifact}
+        --output-type {output-type}
+        --output-description {output-description}
+        --min-price {min-price}
+        --max-price {max-price}

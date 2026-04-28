@@ -1,0 +1,11 @@
+name: clean-data
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.13
+  - pandas=2.3.3
+  - pip=26.0.1
+  - pip:
+      - wandb==0.26.0
+      - wandb-utils @ file:../../components/wandb-utils
