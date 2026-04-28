@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 This step takes the best model, tagged with the "prod" tag, and tests it against the test dataset
 """
@@ -18,7 +19,7 @@ logger = logging.getLogger()
 
 def go(args):
 
-    run = wandb.init(job_type="test_model")
+    run = wandb.init(job_type="test-regression-model")
     run.config.update(args)
 
     logger.info("Downloading artifacts")
@@ -55,14 +56,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test the provided model against the test dataset")
 
     parser.add_argument(
-        "--mlflow_model",
+        "--mlflow-model",
         type=str, 
         help="Input MLFlow model",
         required=True
     )
-
     parser.add_argument(
-        "--test_dataset",
+        "--test-dataset",
         type=str, 
         help="Test dataset",
         required=True

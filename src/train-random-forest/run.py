@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 This script trains a Random Forest
 """
@@ -233,49 +234,43 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Basic cleaning of dataset")
 
     parser.add_argument(
-        "--trainval_artifact",
+        "--trainval-artifact",
         type=str,
         help="Artifact containing the training dataset. It will be split into train and validation"
     )
-
     parser.add_argument(
-        "--val_size",
+        "--val-size",
         type=float,
         help="Size of the validation split. Fraction of the dataset, or number of items",
     )
-
     parser.add_argument(
-        "--random_seed",
+        "--random-seed",
         type=int,
         help="Seed for random number generator",
         default=42,
         required=False,
     )
-
     parser.add_argument(
-        "--stratify_by",
+        "--stratify-by",
         type=str,
         help="Column to use for stratification",
         default="none",
         required=False,
     )
-
     parser.add_argument(
-        "--rf_config",
+        "--rf-config",
         help="Random forest configuration. A JSON dict that will be passed to the "
         "scikit-learn constructor for RandomForestRegressor.",
         default="{}",
     )
-
     parser.add_argument(
-        "--max_tfidf_features",
+        "--max-tfidf-features",
         help="Maximum number of words to consider for the TFIDF",
         default=10,
         type=int
     )
-
     parser.add_argument(
-        "--output_artifact",
+        "--output-artifact",
         type=str,
         help="Name for the output serialized model",
         required=True,

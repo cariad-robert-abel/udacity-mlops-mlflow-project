@@ -4,43 +4,37 @@ conda_env: conda.yml
 entry_points:
   main:
     parameters:
-
-      trainval_artifact:
+      trainval-artifact:
         description: Train dataset
         type: string
-
-      val_size:
+      val-size:
         description: Size of the validation split. Fraction of the dataset, or number of items
         type: string
-
-      random_seed:
+      random-seed:
         description: Seed for the random number generator. Use this for reproducibility
         type: string
         default: 42
-
-      stratify_by:
+      stratify-by:
         description: Column to use for stratification (if any)
         type: string
         default: 'none'
-
-      rf_config:
+      rf-config:
         description: Random forest configuration. A path to a JSON file with the configuration that will
                      be passed to the scikit-learn constructor for RandomForestRegressor.
-        type: string
-
-      max_tfidf_features:
+        type: path
+      max-tfidf-features:
         description: Maximum number of words to consider for the TFIDF
         type: string
-
-      output_artifact:
+      output-artifact:
         description: Name for the output artifact
         type: string
 
     command: >-
-      python run.py --trainval_artifact {trainval_artifact} \
-                    --val_size {val_size} \
-                    --random_seed {random_seed} \
-                    --stratify_by {stratify_by} \
-                    --rf_config {rf_config} \
-                    --max_tfidf_features {max_tfidf_features} \
-                    --output_artifact {output_artifact}
+      python run.py
+      --trainval-artifact {trainval-artifact}
+      --val-size {val-size}
+      --random-seed {random-seed}
+      --stratify-by {stratify-by}
+      --rf-config {rf-config}
+      --max-tfidf-features {max-tfidf-features}
+      --output-artifact {output-artifact}

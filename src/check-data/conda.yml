@@ -1,4 +1,4 @@
-name: data_check
+name: check-data
 channels:
   - conda-forge
   - defaults

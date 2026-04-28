@@ -1,28 +1,29 @@
-name: data_check
+name: check-data
 conda_env: conda.yml
 
 entry_points:
   main:
     parameters:
-
       csv:
         description: Input CSV file to be tested
         type: string
-
       ref:
         description: Reference CSV file to compare the new csv to
         type: string
-
-      kl_threshold:
+      kl-threshold:
         description: Threshold for the KL divergence test on the neighborhood group column
         type: float
-
-      min_price:
+      min-price:
         description: Minimum accepted price
         type: float
-
-      max_price:
+      max-price:
         description: Maximum accepted price
         type: float
 
-    command: "pytest . -vv --csv {csv} --ref {ref} --kl_threshold {kl_threshold} --min_price {min_price} --max_price {max_price}"
+    command: >-
+      pytest . -vv
+      --csv {csv}
+      --ref {ref}
+      --kl-threshold {kl-threshold}
+      --min-price {min-price}
+      --max-price {max-price}

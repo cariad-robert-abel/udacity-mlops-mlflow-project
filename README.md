@@ -52,11 +52,11 @@ wandb: Appending key for api.wandb.ai to your netrc file: /home/[your username]/
 
 Use [MLflow](https://mlflow.org/) to run the pipeline from the root of the repository:
 
-    mlflow run ./exercise_N [-P steps=download -P hydra_options=main.project=<project-name>]
+    mlflow run ./exercise_N [-P steps=download -P hydra-options=main.project=<project-name>]
 
 You may also pass a comma-separated list of steps (without whitespace) to the `steps` parameter in
 order to only run individual steps or `all` to run all steps (default).
-Configuration options may be overwritten at run time using the `hydra_options` parameter, see
+Configuration options may be overwritten at run time using the `hydra-options` parameter, see
 [Hydra](https://hydra.cc/).
 
 ## License
