@@ -14,4 +14,4 @@ entry_points:
         default: ''
 
     command: >-
-      set H={hydra-options} & call python main.py %H:"=% main.steps={steps}
+      python main.py $(echo {hydra-options}) main.steps={steps}
