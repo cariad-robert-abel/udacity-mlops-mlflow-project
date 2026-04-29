@@ -81,23 +81,17 @@ class PipelineStep:
                 json.dump(dict(value.items()), f)
             return str(filename)
 
-        def _esc_sp(value):
-            """MLflow on Windows invokes cmd /k with mangled arguments"""
-            if (type(value) is str and ' ' in value):
-                return value.replace(' ', '_')
-            return value
-
         # grab hydra output directory
         outdir = Path(HydraConfig.get().runtime.output_dir) / '.json-inputs'
         outdir.mkdir(parents=True, exist_ok=True)
         # collect configuration arguments
         cfg_args = tuple((*cfg.rsplit(':', maxsplit=1), None)[:2] for cfg in self.cfgs)
         # regular config arguments
-        args = {_make_param(key): _esc_sp(_get_value(key)) for key, json_arg in cfg_args if json_arg is None}
+        args = {_make_param(key): _get_value(key) for key, json_arg in cfg_args if json_arg is None}
         # json config arguments
         args.update({_make_param(json_arg): _extract_json_key(key, json_arg, outdir) for key, json_arg in cfg_args if json_arg is not None})
         # additional arguments
-        args.update({k: _esc_sp(v) for k, v in self.args.items()})
+        args.update(self.args)
         return args
 
     def run(self, config: DictConfig) -> 'mlflow.projects.SubmittedRun':
